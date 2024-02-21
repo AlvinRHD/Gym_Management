@@ -18,12 +18,28 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\jorge\source\repos\Gym_Management\Tarea 2 PWA\Gym Managment\Gym Managment
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/jorge/source/repos/Gym_Management/Tarea 2 PWA/Gym Managment/Gym Managment/Views/CustomerViews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJWaWV3cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jorge/source/repos/Gym_Management/Tarea 2 PWA/Gym Managment/Gym Managment/Views/EmployeeViews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVWaWV3cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jorge/source/repos/Gym_Management/Tarea 2 PWA/Gym Managment/Gym Managment/Views/EquipmentViews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBtZW50Vmlld3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jorge/source/repos/Gym_Management/Tarea 2 PWA/Gym Managment/Gym Managment/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jorge/source/repos/Gym_Management/Tarea 2 PWA/Gym Managment/Gym Managment/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jorge/source/repos/Gym_Management/Tarea 2 PWA/Gym Managment/Gym Managment/Views/ProgramsViews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3JhbXNWaWV3cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jorge/source/repos/Gym_Management/Tarea 2 PWA/Gym Managment/Gym Managment/Views/Shared/Error.cshtml]
