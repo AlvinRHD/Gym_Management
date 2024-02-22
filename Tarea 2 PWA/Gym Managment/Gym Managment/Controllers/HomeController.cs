@@ -1,16 +1,18 @@
-﻿using Gym_Managment.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Gym_Managment.Controllers;  // Asegúrate de incluir el espacio de nombres correcto
+using Microsoft.Extensions.Configuration;
+using Gym_Managment.Models;
 using System.Diagnostics;
 
 namespace Gym_Managment.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IConfiguration configuration)
         {
-            _logger = logger;
+            _configuration = configuration;
         }
 
         public IActionResult Index()
@@ -21,6 +23,12 @@ namespace Gym_Managment.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult CreateCustomer()
+        {
+            var customerController = new CustomerController(_configuration);
+            return customerController.Create();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

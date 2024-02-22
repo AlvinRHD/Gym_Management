@@ -1,0 +1,41 @@
+--crear la base de datos
+CREATE DATABASE GymManagement;
+
+USE GymManagement;
+
+
+--crear la tabla customer
+CREATE TABLE Customer (
+CustomerID INT PRIMARY KEY IDENTITY(1,1),      --identificador del cliente
+FirstName NVARCHAR(50) NOT NULL,               --nombre del cliente
+LastName VARCHAR(59) NOT NULL,				   --apellido del cliente
+DateOfBirth DATE,                              --indica si el cliente esta activo o no
+IsActive BIT
+)
+
+--crear la tabla employee
+CREATE TABLE Employee(
+EmployeeID INT PRIMARY KEY IDENTITY(1,1),      --identificador del empleado
+FirstName NVARCHAR(50) NOT NULL,               --nombre del empleado
+LastName NVARCHAR(50) NOT NULL,                --apellido del empleado
+DateOfBirth DATE,                              --fecha de nacimiento del empleado
+IsActive BIT                                   --indica si el empleado esta activo o no
+)
+
+
+--crear la tabla equipment
+CREATE TABLE Equipment(
+EquipmentID INT PRIMARY KEY IDENTITY(1,1),     --identificador del equipamento
+NameE NVARCHAR(50) NOT NULL,                   --nombre del equipamento
+Quantity INT,                                 --cantidad disponible
+IsActive BIT                                   --indica si el equipamento esta activo o no
+)
+
+
+--crear la tabla programs
+CREATE TABLE Programs(
+ProgramsID INT PRIMARY KEY IDENTITY(1,1),    --identificador unico de programas
+NameP NVARCHAR(50) NOT NULL,                 --nombre del programa
+DescriptionP NVARCHAR(300),                    --descripcion del programa
+IsActive BIT                                  --indica si el programa esta activo o no
+)
