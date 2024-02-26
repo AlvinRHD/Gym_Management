@@ -6,15 +6,12 @@ namespace Gym_Management.Repositories.Employee
     {
         IEnumerable<EmployeeModel> GetAll();
 
-        EmployeeModel GetEmployeeById(int id);
+        EmployeeModel GetEmployeeById(int EmployeeID);
 
         void Add(EmployeeModel employee);
 
         void Edit(EmployeeModel employee);
 
-        void Delete(EmployeeModel employee);
-        string? GetById(int customerID);
-        void Add(CustomerModel employee);
-        void Delete(object employeeID);
+        void Delete(int employeeID);
     }
 }

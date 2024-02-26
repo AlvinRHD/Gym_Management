@@ -6,12 +6,12 @@ namespace Gym_Management.Repositories.Program
     {
         IEnumerable<ProgramModel> GetAll();
 
-        ProgramModel GetProgramById(int id);
+        ProgramModel GetById(int ProgramID);
 
         void Add(ProgramModel program);
 
         void Edit(ProgramModel program);
 
-        void Delete(ProgramModel program);
+        void Delete(int ProgramID);
     }
 }

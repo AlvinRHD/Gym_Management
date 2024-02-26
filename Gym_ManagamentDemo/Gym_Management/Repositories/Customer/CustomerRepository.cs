@@ -47,7 +47,7 @@ namespace Gym_Management.Repositories.Customer
             return Customerlist;
         }
 
-        public CustomerModel? GetCustomerById(int CustomerID)
+        public CustomerModel? GetById(int CustomerID)
 
         {
             CustomerModel? customer = null;
@@ -136,7 +136,7 @@ namespace Gym_Management.Repositories.Customer
             }
         }
 
-        public void Delete(CustomerModel customer)
+        public void Delete(int customerID)
         {
             using (var connection = _dbConnection.GetConnection())
             {
@@ -148,7 +148,7 @@ namespace Gym_Management.Repositories.Customer
                     command.CommandText = @"DELETE FROM Customer
                                            WHERE CustomerID = @CustomerID";
 
-                    command.Parameters.AddWithValue("@CustomerID", customer);
+                    command.Parameters.AddWithValue("@CustomerID", customerID);
 
                     command.CommandType = CommandType.Text;
 
@@ -157,19 +157,5 @@ namespace Gym_Management.Repositories.Customer
             }
         }
 
-        public string? GetById(int CustomerID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int customerID)
-        {
-            throw new NotImplementedException();
-        }
-
-        CustomerModel ICustomerRepository.GetById(int CustomerID)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

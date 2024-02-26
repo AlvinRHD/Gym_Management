@@ -38,9 +38,9 @@ namespace Gym_Management.Controllers
 
 
         [HttpGet]
-        public IActionResult Edit(int CustomerID)
+        public IActionResult Edit(int id)
         {
-            var customer = _customerRepository.GetById(CustomerID);
+            var customer = _customerRepository.GetById(id);
 
             if (customer == null)
             {
@@ -74,9 +74,9 @@ namespace Gym_Management.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int CustomerID)
+        public IActionResult Delete(int id)
         {
-            var customer = _customerRepository.GetById(CustomerID);
+            var customer = _customerRepository.GetById(id);
             //CustomerRepository customerRepository = new CustomerRepository();
             //var customer = customerRepository.GetById(CustomerID);
 
@@ -91,9 +91,10 @@ namespace Gym_Management.Controllers
         [HttpPost]
         public IActionResult Delete(CustomerModel customerModel)
         {
+            
             try
             {
-               _customerRepository.Delete(customerModel.CustomerID);
+                _customerRepository.Delete(customerModel.CustomerID);
 
                 //CustomerRepository customerRepository = new CustomerRepository();
                 //customerRepository.Delete(customerModel.CustomerID);

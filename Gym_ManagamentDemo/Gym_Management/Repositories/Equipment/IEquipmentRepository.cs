@@ -7,12 +7,12 @@ namespace Gym_Management.Repositories.Equipment
 
         IEnumerable<EquipmentModel> GetAll();
 
-        EquipmentModel GetEquipmentById(int id);
+        EquipmentModel GetById(int EquipmentID);
 
         void Add(EquipmentModel equipment);
 
         void Edit(EquipmentModel equipment);
 
-        void Delete(EquipmentModel equipment);
+        void Delete(int equipmentID);
     }
 }

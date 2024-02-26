@@ -1,5 +1,31 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ProgramModel
 @{
+    ViewData["Title"] = "Edit Program";
 }
+
+<h1>Edit Customer</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit">
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+                    <label asp-for="NameP" class="form-label">NameP</label>
+                    <input asp-for="NameP" type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DescriptionP" class="form-label">DescripcionP</label>
+                    <input asp-for="DescriptionP" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">IsActive</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+        </div>
+    </div>

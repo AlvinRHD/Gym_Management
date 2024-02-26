@@ -1,5 +1,4 @@
 ﻿using Gym_Management.Models;
-using Gym_Management.Repositories.Customer;
 using Gym_Management.Repositories.Employee;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +7,7 @@ namespace Gym_Management.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
-        private object employeeModel;
+        
 
         public EmployeeController(IEmployeeRepository employeeRepository)
         {
@@ -27,7 +26,7 @@ namespace Gym_Management.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CustomerModel employee)
+        public ActionResult Create(EmployeeModel employee)
         {
             if (!ModelState.IsValid)
             {
@@ -40,16 +39,16 @@ namespace Gym_Management.Controllers
 
 
         [HttpGet]
-        public IActionResult Edit(int CustomerID)
+        public IActionResult Edit(int id)
         {
-            var customer = _employeeRepository.GetById(CustomerID);
+            var employee = _employeeRepository.GetEmployeeById(id);
 
-            if (customer == null)
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(employee);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -76,9 +75,9 @@ namespace Gym_Management.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int EmployeeID)
+        public IActionResult Delete(int id)
         {
-            var employee = _employeeRepository.GetById(EmployeeID);
+            var employee = _employeeRepository.GetEmployeeById(id);
             //CustomerRepository customerRepository = new CustomerRepository();
             //var customer = customerRepository.GetById(CustomerID);
 
