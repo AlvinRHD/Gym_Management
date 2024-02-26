@@ -14,9 +14,9 @@ namespace Gym_Management.Repositories.Employee
             _dbConnection = dbConnection;
         }
 
-        public IEnumerable<CustomerModel> GetAll()
+        public IEnumerable<EmployeeModel> GetAll()
         {
-            List<CustomerModel> Customerlist = new List<CustomerModel>();
+            List<EmployeeModel> Employeelist = new List<EmployeeModel>();
 
             using (var connection = _dbConnection.GetConnection())
             {
@@ -24,33 +24,33 @@ namespace Gym_Management.Repositories.Employee
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "SELECT CustomerID, FirstName, LastName, DateOfBirth, IsActive FROM Customer;";
+                    command.CommandText = "SELECT EmployeeID, FirstName, LastName, DateOfBirth, IsActive FROM Employee;";
                     command.CommandType = CommandType.Text;
 
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            CustomerModel customer = new CustomerModel();
-                            customer.CustomerID = Convert.ToInt32(reader["CustomerID"]);
-                            customer.FirstName = reader["FirstName"].ToString();
-                            customer.LastName = reader["LastName"].ToString();
-                            customer.DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
-                            customer.IsActive = Convert.ToBoolean(reader["IsActive"]);
+                            EmployeeModel employee = new EmployeeModel();
+                            employee.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                            employee.FirstName = reader["FirstName"].ToString();
+                            employee.LastName = reader["LastName"].ToString();
+                            employee.DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
+                            employee.IsActive = Convert.ToBoolean(reader["IsActive"]);
 
 
-                            Customerlist.Add(customer);
+                            Employeelist.Add(employee);
                         }
                     }
                 }
             }
-            return Customerlist;
+            return Employeelist;
         }
 
-        public CustomerModel? GetCustomerById(int CustomerID)
+        public EmployeeModel? GetEmployeeById(int EmployeeID)
 
         {
-            CustomerModel? customer = null;
+            EmployeeModel? employee = null;
 
             using (var connection = _dbConnection.GetConnection())
             {
@@ -59,19 +59,19 @@ namespace Gym_Management.Repositories.Employee
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = @"SELECT CustomerID, FirstName, LastName, DateOfBirth, IsActive FROM Customer
-                                            WHERE CustomerID = @CustomerID";
+                    command.CommandText = @"SELECT EmployeeID, FirstName, LastName, DateOfBirth, IsActive FROM Employee
+                                            WHERE EmployeeID = @EmployeeID";
 
-                    command.Parameters.AddWithValue("@CustomerID", CustomerID);
+                    command.Parameters.AddWithValue("@EmployeeID", EmployeeID);
                     command.CommandType = CommandType.Text;
 
                     using (var reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            customer = new CustomerModel
+                            employee = new EmployeeModel
                             {
-                                CustomerID = Convert.ToInt32(reader["CustomerID"]),
+                                EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
                                 FirstName = reader["FirstName"].ToString(),
                                 LastName = reader["LastName"].ToString(),
                                 DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
@@ -81,9 +81,9 @@ namespace Gym_Management.Repositories.Employee
                     }
                 }
             }
-            return customer;
+            return employee;
         }
-        public void Add(CustomerModel customer)
+        public void Add(EmployeeModel employee)
         {
             using (var connection = _dbConnection.GetConnection())
             {
@@ -92,13 +92,13 @@ namespace Gym_Management.Repositories.Employee
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = @"INSERT INTO Customer                                         
+                    command.CommandText = @"INSERT INTO Employee                                         
                                            VALUES(@FirstName, @LastName, @DateOfBirth, @IsActive)";
 
-                    command.Parameters.AddWithValue("@FirstName", customer.FirstName);
-                    command.Parameters.AddWithValue("@LastName", customer.LastName);
-                    command.Parameters.AddWithValue("@DateOfBirth", customer.DateOfBirth);
-                    command.Parameters.AddWithValue("@IsActive", customer.IsActive);
+                    command.Parameters.AddWithValue("@FirstName", employee.FirstName);
+                    command.Parameters.AddWithValue("@LastName", employee.LastName);
+                    command.Parameters.AddWithValue("@DateOfBirth", employee.DateOfBirth);
+                    command.Parameters.AddWithValue("@IsActive", employee.IsActive);
 
                     command.CommandType = CommandType.Text;
 
@@ -107,7 +107,7 @@ namespace Gym_Management.Repositories.Employee
             }
         }
 
-        public void Edit(CustomerModel customer)
+        public void Edit(EmployeeModel employee)
         {
             using (var connection = _dbConnection.GetConnection())
             {
@@ -116,18 +116,18 @@ namespace Gym_Management.Repositories.Employee
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = @"UPDATE Customer 
+                    command.CommandText = @"UPDATE Employee 
                                            SET FirstName = @FirstName,
                                            LastName = @LastName,
                                            DateOfBirth = @DateOfBirth,
                                            IsActive = @IsActive
-                                           WHERE CustomerID = @CustomerID";
+                                           WHERE EmployeeID = @EmployeeID";
 
-                    command.Parameters.AddWithValue("@FirstName", customer.FirstName);
-                    command.Parameters.AddWithValue("@LastName", customer.LastName);
-                    command.Parameters.AddWithValue("@DateOfBirth", customer.DateOfBirth);
-                    command.Parameters.AddWithValue("@IsActive", customer.IsActive);
-                    command.Parameters.AddWithValue("@CustomerID", customer.CustomerID);
+                    command.Parameters.AddWithValue("@FirstName", employee.FirstName);
+                    command.Parameters.AddWithValue("@LastName", employee.LastName);
+                    command.Parameters.AddWithValue("@DateOfBirth", employee.DateOfBirth);
+                    command.Parameters.AddWithValue("@IsActive", employee.IsActive);
+                    command.Parameters.AddWithValue("@EmployeeID", employee.EmployeeID);
 
                     command.CommandType = CommandType.Text;
 
@@ -136,7 +136,7 @@ namespace Gym_Management.Repositories.Employee
             }
         }
 
-        public void Delete(CustomerModel customer)
+        public void Delete(EmployeeModel employee)
         {
             using (var connection = _dbConnection.GetConnection())
             {
@@ -145,10 +145,10 @@ namespace Gym_Management.Repositories.Employee
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = @"DELETE FROM Customer
-                                           WHERE CustomerID = @CustomerID";
+                    command.CommandText = @"DELETE FROM Employee
+                                           WHERE EmployeeID = @EmployeeID";
 
-                    command.Parameters.AddWithValue("@CustomerID", customer);
+                    command.Parameters.AddWithValue("@EmployeeID", employee);
 
                     command.CommandType = CommandType.Text;
 
@@ -157,12 +157,12 @@ namespace Gym_Management.Repositories.Employee
             }
         }
 
-        public string? GetById(int CustomerID)
+        public string? GetById(int EmployeeID)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(int customerID)
+        public void Delete(int employeeID)
         {
             throw new NotImplementedException();
         }
