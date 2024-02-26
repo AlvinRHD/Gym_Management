@@ -166,5 +166,15 @@ namespace Gym_Management.Repositories.Employee
         {
             throw new NotImplementedException();
         }
+
+        public void Add(CustomerModel employee)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(object employeeID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

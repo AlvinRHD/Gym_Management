@@ -166,5 +166,10 @@ namespace Gym_Management.Repositories.Customer
         {
             throw new NotImplementedException();
         }
+
+        CustomerModel ICustomerRepository.GetById(int CustomerID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

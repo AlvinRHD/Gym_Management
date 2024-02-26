@@ -8,6 +8,7 @@ namespace Gym_Management.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
+        private object employeeModel;
 
         public EmployeeController(IEmployeeRepository employeeRepository)
         {
@@ -75,7 +76,7 @@ namespace Gym_Management.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int CustomerID)
+        public IActionResult Delete(int EmployeeID)
         {
             var employee = _employeeRepository.GetById(EmployeeID);
             //CustomerRepository customerRepository = new CustomerRepository();
@@ -90,7 +91,7 @@ namespace Gym_Management.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(CustomerModel customerModel)
+        public IActionResult Delete(EmployeeModel employeeModel)
         {
             try
             {
@@ -105,7 +106,7 @@ namespace Gym_Management.Controllers
             {
                 ViewBag.Error = ex.Message;
 
-                return View(customerModel);
+                return View(employeeModel);
             }
         }
     }

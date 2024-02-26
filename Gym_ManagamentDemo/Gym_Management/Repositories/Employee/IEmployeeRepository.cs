@@ -14,5 +14,7 @@ namespace Gym_Management.Repositories.Employee
 
         void Delete(EmployeeModel employee);
         string? GetById(int customerID);
+        void Add(CustomerModel employee);
+        void Delete(object employeeID);
     }
 }
