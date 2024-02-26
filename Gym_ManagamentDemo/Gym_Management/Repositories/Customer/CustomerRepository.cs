@@ -93,7 +93,7 @@ namespace Gym_Management.Repositories.Customer
                 {
                     command.Connection = connection;
                     command.CommandText = @"INSERT INTO Customer                                         
-                                           VALUES(@FirstName, @LastName, @DateOfBirth, IsActive)";
+                                           VALUES(@FirstName, @LastName, @DateOfBirth, @IsActive)";
 
                     command.Parameters.AddWithValue("@FirstName", customer.FirstName);
                     command.Parameters.AddWithValue("@LastName", customer.LastName);
@@ -155,6 +155,16 @@ namespace Gym_Management.Repositories.Customer
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        public string? GetById(int CustomerID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int customerID)
+        {
+            throw new NotImplementedException();
         }
     }
 }

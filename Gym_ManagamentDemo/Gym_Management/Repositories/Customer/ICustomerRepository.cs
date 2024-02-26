@@ -6,12 +6,13 @@ namespace Gym_Management.Repositories.Customer
     {
         IEnumerable<CustomerModel> GetAll();
 
-        CustomerModel GetCustomerById(int id);
+        CustomerModel GetCustomerById(int CustomerID);
 
         void Add(CustomerModel customer);
 
         void Edit(CustomerModel customer);
 
-        void Delete(CustomerModel customer);
+        void Delete(int customerID);
+        string? GetById(int customerID);
     }
 }

@@ -15,7 +15,7 @@ namespace Gym_Management.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_customerRepository.GetAll());
         }
 
         public IActionResult Create()
@@ -37,13 +37,75 @@ namespace Gym_Management.Controllers
         }
 
 
-        public IActionResult Edit()
+        [HttpGet]
+        public IActionResult Edit(int CustomerID)
         {
-            return View();
+            var customer = _customerRepository.GetById(CustomerID);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return View(customer);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(CustomerModel customerModel)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(customerModel);
+                }
+
+                _customerRepository.Edit(customerModel);
+                //_customerRepository.Edit(customerModel);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+
+                return View(customerModel);
+            }
         }
 
-        
+        [HttpGet]
+        public IActionResult Delete(int CustomerID)
+        {
+            var customer = _customerRepository.GetById(CustomerID);
+            //CustomerRepository customerRepository = new CustomerRepository();
+            //var customer = customerRepository.GetById(CustomerID);
 
-        
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return View(customer);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(CustomerModel customerModel)
+        {
+            try
+            {
+               _customerRepository.Delete(customerModel.CustomerID);
+
+                //CustomerRepository customerRepository = new CustomerRepository();
+                //customerRepository.Delete(customerModel.CustomerID);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+
+                return View(customerModel);
+            }
+        }
     }
 }
