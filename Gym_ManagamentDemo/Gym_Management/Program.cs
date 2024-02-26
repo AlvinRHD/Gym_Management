@@ -1,7 +1,16 @@
+using Gym_Management.Data;
+using Gym_Management.Repositories.Customer;
+using Gym_Management.Repositories.Employee;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<SqlDataAccess>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+
+
 
 var app = builder.Build();
 

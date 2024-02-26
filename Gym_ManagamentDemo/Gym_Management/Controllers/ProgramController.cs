@@ -8,20 +8,5 @@ namespace Gym_Management.Controllers
         { 
             return View(); 
         }
-
-        [HttpGet]
-        public IActionResult Create() 
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(Program program)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(program);
-            }
-        }
     }
 }

@@ -6,35 +6,46 @@ namespace Gym_Management.Controllers
 {
     public class CustomerController : Controller
     {
+        private readonly ICustomerRepository _customerRepository;
+
+        public CustomerController(ICustomerRepository customerRepository)
+        {
+            _customerRepository = customerRepository;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(CustomerModel customerModel) 
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CustomerModel customer)
         {
-            CustomerModel customer = new CustomerModel();
-            
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
-                return View(customerModel);
+                return View(customer);
             }
+            _customerRepository.Add(customer);
 
-            CustomerRepository.Add(customerModel);
+            return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Edit() 
-        {
-            var customerModel = CustomerModel.GetbyId(id);
 
-            return View(customerModel);
+        public IActionResult Edit()
+        {
+            return View();
+        }
+
+        public IActionResult Delete()
+        {
+            return View();
+
         }
     }
 }

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CustomerModel>
+@{
+    ViewData["Title"] = "List Customer";
+}
+
+<h1>List Customer</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="mt-3 mb-3">
+                <a asp-action="Create" asp-controller="Customer" class="btn btn-success">
+                    New Customer
+                </a>
+            </div>
+
+            @if (Model != null && Model.Any())
+            {
+            <table class="table table-bordered table-striped table-responsive" id="customerTable">
+                <thead>
+                    <tr>
+                        <th>CustomerID</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>DateOfBirth</th>
+                        <th>IsActive</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customer in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(item => customer.CustomerID)</td>
+                            <td>@Html.DisplayFor(item => customer.FirstName)</td>
+                            <td>@Html.DisplayFor(item => customer.LastName)</td>
+                            <td>@Html.DisplayFor(item => customer.DateOfBirth)</td>
+                            <td>@Html.DisplayFor(item => customer.IsActive)</td>
+                            <td>
+                                <a asp-controller="Customer"
+                                   asp-action="Edit"
+                                   asp-route-id="@customer.CustomerID"
+                                   class="btn btn-primary">
+                                    Edit
+                                </a>
+                                <a asp-controller="Customer"
+                                   asp-action="Delete"
+                                   asp-route-id="@customer.CustomerID"
+                                   class="btn btn-danger">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            }
+        </div>
+    </div>
+</div>
