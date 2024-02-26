@@ -102,7 +102,7 @@ namespace Gym_Management.Repositories.Customer
 
                     command.CommandType = CommandType.Text;
 
-                    
+                    command.ExecuteNonQuery();
                 }
             }
         }

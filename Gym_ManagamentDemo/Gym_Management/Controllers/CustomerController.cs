@@ -42,10 +42,8 @@ namespace Gym_Management.Controllers
             return View();
         }
 
-        public IActionResult Delete()
-        {
-            return View();
+        
 
-        }
+        
     }
 }
